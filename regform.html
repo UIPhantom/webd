@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,47 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <style>
-        body{
+        body {
             background-image: none;
         }
-        form{
+
+        form {
             background-color: #fff;
             text-align: justify;
             border: 2px solid orange;
             width: 50%;
+            margin: 0 auto;
+            padding: 20px;
         }
-        h2{
+
+        h2 {
             text-align: center;
+            margin-top: 0;
         }
-        h6{
+
+        h6 {
             text-align: center;
+            margin-bottom: 20px;
         }
-        label{
-            text-align: justify;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
         }
-        input{
-            width: inherit;
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
         }
-        #com{
-            width: 100%;
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"] {
+            padding: 5px;
         }
-        button{
+
+        .time-inputs {
+            display: flex;
+            align-items: center;
+        }
+
+        .time-inputs input[type="date"],
+        .time-inputs input[type="time"] {
+            width: 50%;
+            flex: 1;
+            margin-right: 5px;
+        }
+
+        button[type="submit"] {
             background-color: rgb(243, 133, 82);
             color: #fff;
             width: 100%;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
         }
-
     </style>
 </head>
 <body>
-    <form action="submit">
-       <h2>Book a call</h2>
-       <h6>Book a call slot and our represntative will call you within 1hr of selected time.</h6> 
-       <label for="name">Name:</label><br><input type="text" id="com"><br>
-       <label for="email">Email:</label><br><input type="email" name="email" id="com"><br>
-       <label for="phone">Phone:</label><br><input type="number" name="phone" maxlength="10" id="com"><br>
-       <label for="time">Time for Call:</label><br><input type="date" name="time"><input type="time"><br>
-       <button type="submit">GET A CALL</button>
+    <form id="registrationForm">
+        <h2>Book a call</h2>
+        <h6>Book a call slot and our representative will call you within 1 hour of the selected time.</h6>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="number" id="phone" maxlength="10">
+        </div>
+        <div class="form-group">
+            <label for="time">Time for Call:</label>
+            <div class="time-inputs">
+                <input type="date" id="callDate">
+                <input type="time" id="callTime">
+            </div>
+        </div>
+        <button type="submit">GET A CALL</button>
     </form>
+
+    <script src="regForm.js"></script>
 </body>
 </html>
