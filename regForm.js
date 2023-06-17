@@ -1,15 +1,18 @@
-document.getElementById('registrationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// Get the form element
+var form = document.getElementById('registrationForm');
 
-    // Get input values
+// Add event listener for form submission
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Get the input values
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var phone = document.getElementById('phone').value;
     var callDate = document.getElementById('callDate').value;
     var callTime = document.getElementById('callTime').value;
 
-    // Store the form data in local storage or perform any desired action
-    // Example: Storing the data as an object
+    // Create an object to store the form details
     var formData = {
         name: name,
         email: email,
@@ -18,12 +21,19 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         callTime: callTime
     };
 
-    // Store the form data in local storage
-    localStorage.setItem('formData', JSON.stringify(formData));
+    // Get existing form data from local storage or create an empty array if it doesn't exist
+    var storedData = localStorage.getItem('formData');
+    var formDataArray = storedData ? JSON.parse(storedData) : [];
 
-    // Display a success message or redirect to another page
+    // Add the new form data object to the array
+    formDataArray.push(formData);
+
+    // Store the updated form data array in local storage
+    localStorage.setItem('formData', JSON.stringify(formDataArray));
+
+    // Display a success message or perform any other actions
     alert('Form submitted successfully!');
-
-    // Reset the form
+    
+    // Clear the form inputs
     document.getElementById('registrationForm').reset();
 });
