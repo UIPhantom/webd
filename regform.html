@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,8 +69,26 @@
             border: none;
             cursor: pointer;
         }
+
+        /* Add the following CSS to your main.css file or inside <style> tags in HTML */
+
+        .user-details {
+            display: none;
+            text-align: left;
+        }
+
+        .user-details h2 {
+            margin-top: 20px;
+        }
+
+        .user-details li {
+            margin-bottom: 5px;
+            list-style-type: disc;
+            padding-left: 20px;
+        }
     </style>
 </head>
+
 <body>
     <form id="registrationForm">
         <h2>Book a call</h2>
@@ -96,6 +115,12 @@
         <button type="submit">GET A CALL</button>
     </form>
 
+    <div class="user-details" id="userDetails">
+        <h2>User Details</h2>
+        <ul id="userList"></ul>
+    </div>
+
     <script src="regForm.js"></script>
 </body>
+
 </html>
