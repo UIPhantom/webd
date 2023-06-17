@@ -39,28 +39,36 @@ function displayUserDetails(userDetails) {
     var userList = document.getElementById('userList');
     userList.innerHTML = ''; // Clear the previous details
 
-    var ul = document.createElement('ul');
-
     userDetails.forEach(function (user) {
         var details = Object.values(user).filter(value => value); // Filter out empty or undefined values
         var li = document.createElement('li');
         li.textContent = details.join(' - ');
-        ul.appendChild(li);
-    });
 
-    userList.appendChild(ul);
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function() {
+            // Remove the user detail from local storage
+            var storedUserDetails = JSON.parse(localStorage.getItem('userDetails'));
+            var updatedUserDetails = storedUserDetails.filter(function(item) {
+                return item.email !== user.email;
+            });
+            localStorage.setItem('userDetails', JSON.stringify(updatedUserDetails));
+
+            // Remove the user detail from the UI
+            li.remove();
+        });
+
+        li.appendChild(deleteButton);
+        userList.appendChild(li);
+    });
 
     // Show the user details section
     var userDetailsSection = document.getElementById('userDetails');
     userDetailsSection.style.display = 'block';
 }
 
-
-
 // Load the user details from local storage on page load
 var storedUserDetails = JSON.parse(localStorage.getItem('userDetails'));
 if (storedUserDetails) {
     displayUserDetails(storedUserDetails);
 }
-
-
